@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<context:component-scan base-package="com.pinyougou.page.service.impl"/>-->
+
+	<dubbo:application name="pinyougou_service_page_337"/>
+	<dubbo:registry address="zookeeper://192.168.200.128:2181"/>
+	<dubbo:protocol name="dubbo" port="20885"></dubbo:protocol>
+	<dubbo:annotation package="com.itheima.core.service" />
+
+	<!--将freemarker进行实例化-->
+	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+
+		<!--2. 加载模板文件所在的路径-->
+		<property name="templateLoaderPaths">
+			<!--支持多个模板,数组-->
+			<!--模板文件所在的目录,支持相对路径-->
+			<array>
+				<value>/WEB-INF/ftl/</value>
+				<value>/WEB-INF/ftl2/</value>
+			</array>
+		</property>
+
+		<!--配置默认编码为utf-8-->
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+   
+</beans>
