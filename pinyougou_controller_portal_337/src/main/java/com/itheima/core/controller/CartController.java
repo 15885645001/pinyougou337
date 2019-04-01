@@ -46,7 +46,7 @@ public class CartController {
     @CrossOrigin(origins={"http://localhost:9003"})
     public Result addGoodsToCartList(Long itemId, Integer num, HttpServletRequest request,HttpServletResponse response){
 
-        System.out.println(11111111);
+        //System.out.println(11111111);
 
         response.setContentType("text/html;charset=utf-8");
 
@@ -158,7 +158,7 @@ public class CartController {
         }
 
 
-        //5：有  装满
+        //5：如果购物车中有商品  将商品的信息装满
         if(cartList != null){
             cartList = cartService.findCartList(cartList);
         }
